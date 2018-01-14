@@ -4,9 +4,12 @@ const publicPath = path.join(__dirname,"../public");
 const port = process.env.PORT || 3000;
 const express    = require('express');
 const socketIO = require('socket.io');
-const app = express()
+const app = express();
 var server = http.createServer(app);
-var io = socketIO(server)
+var io = socketIO(server);
+var message = require('./utils/message.js');
+
+
 app.use(express.static(publicPath))
 
 
@@ -16,11 +19,7 @@ app.use(express.static(publicPath))
 io.on('connection', (socket)=>{
   console.log("New user connected");
 
-  socket.emit('newMessage',{
-    from: "Admin",
-    text: "Welcome to chat app",
-    createdAt: new Date().getTime()
-  });
+  socket.emit('newMessage',generateMessage("Admin","Welcome to chat app"));
 
   socket.emit('newMessage',{
      from: "user1",
