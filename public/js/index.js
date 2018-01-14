@@ -7,7 +7,11 @@ socket.on('connect', function () {
     to: "group1",
     text: "wazaaaa"
   });
+
+
 });
+
+
 
 socket.on('disconnect', function (){
   console.log("Disconnected from server");
