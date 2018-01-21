@@ -15,10 +15,10 @@ describe('generateMessage',()=>{
 describe('createNewLocationMessage',()=>{
   it('should generate correct location object',()=>{
     var from = "user1"
-    var latitude = 1,longitude=1,url="https://www.google.bg/maps/q=1,1";
+    var latitude = 1,longitude=1,url="https://www.google.bg/maps?q=1,1";
     var messageObj = generateLocationMessage(from,latitude,longitude);
     expect(messageObj).toInclude({from, url});
-    expect(messageObj.url).toBe(`https://www.google.bg/maps/q=1,1`)
+    expect(messageObj.url).toBe(`https://www.google.bg/maps?q=1,1`)
 
   })
 })
